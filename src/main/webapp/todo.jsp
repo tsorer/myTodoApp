@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TodoList Servlet</title>
+    <title>Welcome to MyTodoList!</title>
 </head>
 <body>
     <h1>TodoList:</h1>
