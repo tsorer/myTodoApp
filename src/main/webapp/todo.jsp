@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %> 
 <%@ page import="java.util.ArrayList" %> 
+<%@ page import="com.javatrainingschool.model.TodoEntry" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -11,16 +13,16 @@
 <body>
     <h1>TodoList:</h1>
     <% 
-        List<String> messages = (List<String>) request.getAttribute("messages");
-        if (messages != null) {
-            for (String message : messages) { 
+    List<TodoEntry> todoList = (List<TodoEntry>) request.getAttribute("todoList");
+        if (todoList != null) {
+            for (TodoEntry todoEntry : todoList) { 
     %>
-                <p><%= message %></p>
+                <p><%= todoEntry %></p>
     <% 
             }
         } 
     %>
-    <form method='post' action='chat'>
+    <form method='post' action='todo'>
         <label>New Todo:</label>
         <input type='text' name='message' />
         <input type='submit' value='post' />

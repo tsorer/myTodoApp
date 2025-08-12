@@ -19,7 +19,7 @@ public class TodoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1. Daten vom Model abrufen
         // Die Nachrichtenliste wird vom Model geholt
-        request.setAttribute("messages", todoList.showTodoList());
+        request.setAttribute("todoList", todoList.showTodoList());
         
         // 2. An die View (JSP) weiterleiten
         // Der Controller entscheidet, welche View die Daten anzeigen soll
@@ -34,7 +34,7 @@ public class TodoServlet extends HttpServlet {
         
         // 2. Daten mit dem Model verarbeiten
         // Die Logik, um die Nachricht zu speichern, liegt im Model
-        todoList.addTodoEntry(1,message);
+        todoList.addTodoEntry(message);
         
         // 3. Nach der Verarbeitung auf die GET-Seite umleiten
         // Dadurch wird die Seite neu geladen und die neue Nachricht angezeigt

@@ -6,10 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TodoList Servlet</title>
+    <title>Chat Servlet</title>
 </head>
 <body>
-    <h1>TodoList:</h1>
+    <h1>Enter a Chat Message:</h1>
     <% 
         List<String> messages = (List<String>) request.getAttribute("messages");
         if (messages != null) {

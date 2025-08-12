@@ -28,6 +28,12 @@ public class TodoEntry {
     public void setTodoName(String todoName) {
         this.todoName = todoName;
     }
+    
+    // toString-Methode
+    @Override
+    public String toString() {
+        return "ID: " + id + ", Todo: " + todoName;
+    }
 
 
 }

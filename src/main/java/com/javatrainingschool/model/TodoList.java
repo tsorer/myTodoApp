@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class TodoList {
 
+	private int idCounter = 0;
     private ArrayList<TodoEntry> todoList = new ArrayList<>();
 
     /**
@@ -10,8 +11,9 @@ public class TodoList {
      * @param id die ID des Todo-Eintrags
      * @param todoName der Name des Todo-Eintrags
      */
-    public void addTodoEntry(int id, String todoName){
-        TodoEntry todoEntry = new TodoEntry(id, todoName);
+    public void addTodoEntry(String todoName){
+    	
+        TodoEntry todoEntry = new TodoEntry(idCounter++, todoName);
         this.todoList.add(todoEntry);
     }
 
