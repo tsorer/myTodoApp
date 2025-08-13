@@ -28,16 +28,16 @@ public class TodoServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1. Eingabedaten vom Benutzer entgegennehmen
-        String message = request.getParameter("message");
-        
-        
-        // 2. Daten mit dem Model verarbeiten
-        // Die Logik, um die Nachricht zu speichern, liegt im Model
-        todoList.addTodoEntry(message);
-        
-        // 3. Nach der Verarbeitung auf die GET-Seite umleiten
-        // Dadurch wird die Seite neu geladen und die neue Nachricht angezeigt
+        String action = request.getParameter("action");
+
+        if ("add".equals(action)) {
+            String message = request.getParameter("message");
+            todoList.addTodoEntry(message);
+        } else if ("remove".equals(action)) {
+            int todoId = Integer.parseInt(request.getParameter("todoId"));
+            todoList.removeTodoEntry(todoId);
+        }
+
         response.sendRedirect("todo");
     }
 }

@@ -16,6 +16,14 @@ public class TodoList {
         TodoEntry todoEntry = new TodoEntry(idCounter++, todoName);
         this.todoList.add(todoEntry);
     }
+    
+    /**
+    * Entfernt einen TodoEntry aus der Liste.
+    * @param todoId die ID des Todo-Eintrags
+    */
+   public void removeTodoEntry(int todoId) {
+       todoList.removeIf(todoEntry -> todoEntry.getId() == todoId);
+   }
 
     /**
      * Gibt die TodoListe aus.
@@ -24,4 +32,6 @@ public class TodoList {
     public ArrayList<TodoEntry> showTodoList(){
         return this.todoList; // Rückgabe der Liste
     }
+    
+    
 }
