@@ -1,12 +1,24 @@
 package com.javatrainingschool.model;
+
+import java.util.Date;
+
 public class TodoEntry {
-    public int id;
-    private String todoName;
+    private int id;
+    private String title;
+    private String category; // Optionale Kategorie
+    private Date dueDate; // Optionales Fälligkeitsdatum
+    private boolean isImportant; // Markierung als wichtig
+    private boolean isCompleted; // Markierung als abgeschlossen
 
 
-    public TodoEntry(int id, String todoName){
+    public TodoEntry(int id, String todoTitle, String todoCategory, Date todoDueDate, boolean todoIsImportant, boolean todoIsCompleted){
         this.id = id;
-        this. todoName = todoName;
+        this. title = todoTitle;
+        this.category = todoCategory;
+        this.dueDate= todoDueDate;
+        this.isImportant = todoIsImportant;
+        this.isCompleted = todoIsCompleted;
+        
     }
 
 
@@ -15,24 +27,56 @@ public class TodoEntry {
     public int getId() {
         return id;
     }
-    public String getTodoName() {
-        return todoName;
+    public String getTodoTitle() {
+        return title;
+    }
+    
+    public String getTodoCategory() {
+        return category;
+    }
+    
+    public Date getTodoDueDate() {
+        return dueDate;
+    }
+    
+    public boolean getTodoIsImportant() {
+        return isImportant;
+    }
+    
+    public boolean getTodoIsCompleted() {
+        return isCompleted;
     }
 
     //Setters
 
-    public void setId(int Id){
-        this.id = Id;
+    public void setId(int id){
+        this.id = id;
     }
 
-    public void setTodoName(String todoName) {
-        this.todoName = todoName;
+    public void setTodoTitle(String todoTitle) {
+        this.title = todoTitle;
+    }
+    
+    public void setTodoCategory(String todoCategory) {
+        this.category = todoCategory;
+    }
+    
+    public void setTodoDueDate(Date todoDueDate) {
+        this.dueDate = todoDueDate;
+    }
+    
+    public void isImportant(boolean todoIsImportant) {
+        this.isImportant = todoIsImportant;
+    }
+    
+    public void isCompleted(boolean todoIsCompleted) {
+        this.isCompleted = todoIsCompleted;
     }
     
     // toString-Methode
     @Override
     public String toString() {
-        return "ID: " + id + ", Todo: " + todoName;
+        return "ID: " + id + ", Todo: " + title;
     }
 
 

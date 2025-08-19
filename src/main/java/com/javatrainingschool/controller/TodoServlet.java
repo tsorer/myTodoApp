@@ -2,6 +2,10 @@ package com.javatrainingschool.controller;
 import com.javatrainingschool.model.TodoList;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +36,25 @@ public class TodoServlet extends HttpServlet {
 
         if ("add".equals(action)) {
             String message = request.getParameter("message");
-            todoList.addTodoEntry(message);
+            String category = request.getParameter("category");
+            String dueDateStr = request.getParameter("dueDate");
+            boolean isImportant = request.getParameter("isImportant") != null;
+            boolean isCompleted = request.getParameter("isCompleted") != null;
+           
+            
+            // Konvertiere das Fälligkeitsdatum von String zu Date
+            Date dueDate = null;
+            if (dueDateStr != null && !dueDateStr.isEmpty()) {
+                try {
+                    dueDate = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(dueDateStr);
+                } catch (ParseException e) {
+                    e.printStackTrace(); // Fehlerbehandlung
+                }
+            }
+            
+            
+            todoList.addTodoEntry(message, category, dueDate, isImportant, isCompleted);
+
         } else if ("remove".equals(action)) {
             int todoId = Integer.parseInt(request.getParameter("todoId"));
             todoList.removeTodoEntry(todoId);
