@@ -24,6 +24,7 @@ public class TodoServlet extends HttpServlet {
         // 1. Daten vom Model abrufen
         // Die Nachrichtenliste wird vom Model geholt
         request.setAttribute("todoList", todoList.showTodoList());
+        request.setAttribute("categories", todoList.getCategories());
         
         // 2. An die View (JSP) weiterleiten
         // Der Controller entscheidet, welche View die Daten anzeigen soll
@@ -37,6 +38,14 @@ public class TodoServlet extends HttpServlet {
         if ("add".equals(action)) {
             String message = request.getParameter("message");
             String category = request.getParameter("category");
+            
+            String newCategory = request.getParameter("newCategory"); // Neue Kategorie
+
+            if (newCategory != null && !newCategory.isEmpty()) {
+                todoList.getCategories().add(newCategory); // Neue Kategorie zur Liste hinzufügen
+                category = newCategory; // Verwende die neue Kategorie
+            }
+            
             String dueDateStr = request.getParameter("dueDate");
             boolean isImportant = request.getParameter("isImportant") != null;
             boolean isCompleted = request.getParameter("isCompleted") != null;

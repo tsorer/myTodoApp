@@ -32,20 +32,38 @@
             }
         } 
     %>
-   <form method='post' action='todo'>
-        <label>Neues Todo:</label>
-        <input type='text' name='message' required />
-        <label>Kategorie:</label>
-        <input type='text' name='category' /> <!-- Optionale Kategorie -->
-        <label>Fälligkeitsdatum:</label>
-        <input type='date' name='dueDate' /> <!-- Optionales Fälligkeitsdatum -->
-        <label>Wichtig:</label>
-        <input type='checkbox' name='isImportant' /> <!-- Markierung als wichtig -->
-        <label>Abgeschlossen:</label>
-        <input type='checkbox' name='isCompleted' /> <!-- Markierung als abgeschlossen -->
-        <input type='hidden' name='action' value='add' /> <!-- Aktion zum Hinzufügen -->
-        <input type='submit' value='Hinzufügen' />
-    </form>
+<form method='post' action='todo'>
+    <label>Neues Todo:</label>
+    <input type='text' name='message' required />
+    
+    <label>Kategorie:</label>
+    <select name='category'>
+        <option value=''>Bitte wählen</option>
+        <% 
+        List<String> categories = (List<String>) request.getAttribute("categories");
+        if (categories != null) {
+            for (String category : categories) { 
+        %>
+            <option value='<%= category %>'><%= category %></option>
+        <% 
+            }
+        } 
+        %>
+    </select>
+    <input type='text' id='newCategory' name='newCategory' placeholder='Neue Kategorie hinzufügen' />
+    
+    <label>Fälligkeitsdatum:</label>
+    <input type='date' name='dueDate' />
+    
+    <label>Wichtig:</label>
+    <input type='checkbox' name='isImportant' />
+    
+    <label>Abgeschlossen:</label>
+    <input type='checkbox' name='isCompleted' />
+    
+    <input type='hidden' name='action' value='add' />
+    <input type='submit' value='Hinzufügen' />
+</form>
 </body>
 </html>
 </body>

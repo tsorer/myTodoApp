@@ -6,6 +6,14 @@ public class TodoList {
 
 	private int idCounter = 0;
     private ArrayList<TodoEntry> todoList = new ArrayList<>();
+    private ArrayList<String> categories = new ArrayList<>(); // Liste für Kategorien
+
+    public TodoList() {
+        // Beispielkategorien hinzufügen
+        categories.add("Arbeit");
+        categories.add("Persönlich");
+        categories.add("Einkauf");
+    }
 
     /**
      * Fügt einen neuen TodoEntry der Liste hinzu.
@@ -34,5 +42,22 @@ public class TodoList {
         return this.todoList; // Rückgabe der Liste
     }
     
+    /**
+     * Gibt die Liste der verfügbaren Kategorien zurück.
+     * @return die Liste der Kategorien
+     */
+    public ArrayList<String> getCategories() {
+        return this.categories; // Rückgabe der Kategorien
+    }
+
+    /**
+     * Fügt eine neue Kategorie zur Liste hinzu.
+     * @param category die neue Kategorie
+     */
+    public void addCategory(String category) {
+        if (category != null && !category.isEmpty() && !categories.contains(category)) {
+            categories.add(category); // Neue Kategorie hinzufügen, wenn sie nicht bereits existiert
+        }
+    }
     
 }
