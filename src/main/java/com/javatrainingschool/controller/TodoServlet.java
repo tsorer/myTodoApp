@@ -1,10 +1,12 @@
 package com.javatrainingschool.controller;
+import com.javatrainingschool.model.TodoEntry;
 import com.javatrainingschool.model.TodoList;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,18 +23,39 @@ public class TodoServlet extends HttpServlet {
     private TodoList todoList = new TodoList();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	 response.setContentType("text/html; charset=UTF-8");
+    	 response.setCharacterEncoding("UTF-8"); // Setze die Zeichencodierung
+    	 
+
+    	
         // 1. Daten vom Model abrufen
-        // Die Nachrichtenliste wird vom Model geholt
-        request.setAttribute("todoList", todoList.showTodoList());
-        request.setAttribute("categories", todoList.getCategories());
+        List<TodoEntry> todoList = this.todoList.showTodoList();
+        request.setAttribute("categories", this.todoList.getCategories());
+    	
+        // 2. Filterparameter abrufen
+        String filterCategory = request.getParameter("filterCategory");
+        boolean filterImportant = request.getParameter("filterImportant") != null;
+    	
         
-        // 2. An die View (JSP) weiterleiten
-        // Der Controller entscheidet, welche View die Daten anzeigen soll
+        // 3. Todo-Liste filtern
+        List<TodoEntry> filteredTodos = this.todoList.filterTodoList(filterCategory, filterImportant); 
+        
+        // 4. Todo-Liste sortieren
+        List<TodoEntry> sortedTodos = this.todoList.getSortedTodoList(filteredTodos); // Verwende die neue Methode
+        
+        // 4. Gefilterte Liste an die View weiterleiten
+        request.setAttribute("todoList", sortedTodos);
+        
+        // 5. An die View (JSP) weiterleiten
         RequestDispatcher dispatcher = request.getRequestDispatcher("/todo.jsp");
         dispatcher.forward(request, response);
+    	
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8"); // Setze die Zeichencodierung für die Anfrage
+        response.setContentType("text/html; charset=UTF-8"); // Setze den Content-Type für die Antwort
+    	
         String action = request.getParameter("action");
 
         if ("add".equals(action)) {

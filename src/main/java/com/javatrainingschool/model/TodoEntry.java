@@ -72,6 +72,11 @@ public class TodoEntry {
     public void isCompleted(boolean todoIsCompleted) {
         this.isCompleted = todoIsCompleted;
     }
+
+    // Überprüfen, ob das Fälligkeitsdatum überschritten ist
+    public boolean isOverdue() {
+        return dueDate != null && dueDate.before(new Date());
+    }
     
     // toString-Methode
     @Override

@@ -53,3 +53,12 @@ input[type="submit"]:hover {
     margin: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.overdue-highlight {
+    background-color: #FFE5E5; /* Sanftes Rosa */
+    border: 1px solid #FF9999; /* Hellerer Rand */
+    padding: 10px; /* Innenabstand */
+    margin: 10px 0; /* Abstand zu anderen Einträgen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+}
+

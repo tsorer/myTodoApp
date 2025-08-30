@@ -1,6 +1,9 @@
 package com.javatrainingschool.model;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TodoList {
 
@@ -59,5 +62,31 @@ public class TodoList {
             categories.add(category); // Neue Kategorie hinzufügen, wenn sie nicht bereits existiert
         }
     }
+    
+    // Neue Methode zum Filtern der Todo-Entries
+    public List<TodoEntry> filterTodoList(String category, boolean isImportant) {
+        return todoList.stream()
+            .filter(todo -> (category == null || category.isEmpty() || todo.getTodoCategory().equals(category)) &&
+                            (!isImportant || todo.getTodoIsImportant()))
+            .collect(Collectors.toList());
+    }
+    
+ // Neue Methode zum Sortieren der Todos nach Fälligkeitsdatum
+    public List<TodoEntry> getSortedTodoList(List<TodoEntry> todos) {
+        return todos.stream()
+            .sorted(Comparator.comparing(TodoEntry::getTodoDueDate, Comparator.nullsLast(Comparator.naturalOrder())))
+            .collect(Collectors.toList());
+    }
+    
+    // Neue Methode zum Abrufen der Todo-Entries mit Überfälligkeits-Flag
+    public List<TodoEntry> showTodoListWithOverdueFlag() {
+        return todoList.stream()
+            .map(todo -> {
+                // Hier wird das Überfälligkeits-Flag gesetzt
+                return todo; // Rückgabe des Todo-Eintrags
+            })
+            .collect(Collectors.toList());
+    }
+
     
 }
