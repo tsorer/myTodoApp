@@ -44,7 +44,8 @@ if (todoList != null) {
         <div class="todo-entry <%= isOverdue ? "overdue-highlight" : "" %>"> <!-- Füge die overdue-highlight-Klasse hinzu, wenn überfällig -->
             <p><%= todoEntry.getTodoTitle() %></p>
             <p>Kategorie: <%= todoEntry.getTodoCategory() != null ? todoEntry.getTodoCategory() : "Keine" %></p>
-            <p>Fälligkeitsdatum: <%= todoEntry.getTodoDueDate() != null ? todoEntry.getTodoDueDate() : "Nicht festgelegt" %></p>
+            <p>Fälligkeitsdatum: <%= todoEntry.getFormattedDueDate() != null ? todoEntry.getFormattedDueDate() : "Nicht festgelegt" %></p>
+            
             <p>Wichtig: <%= todoEntry.getTodoIsImportant() ? "Ja" : "Nein" %></p>
             <p>Abgeschlossen: <%= todoEntry.getTodoIsCompleted() ? "Ja" : "Nein" %></p>
             <form method='post' action='todo' style="display:inline;">
