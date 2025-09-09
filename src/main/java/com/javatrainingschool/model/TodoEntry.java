@@ -1,5 +1,6 @@
 package com.javatrainingschool.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TodoEntry {
@@ -38,6 +39,15 @@ public class TodoEntry {
     public Date getTodoDueDate() {
         return dueDate;
     }
+    
+    public String getFormattedDueDate() {
+        if (dueDate == null) {
+            return null;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        return dateFormat.format(dueDate);
+    }
+
     
     public boolean getTodoIsImportant() {
         return isImportant;
