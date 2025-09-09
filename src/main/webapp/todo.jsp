@@ -41,19 +41,21 @@ if (todoList != null) {
     for (TodoEntry todoEntry : todoList) { 
         boolean isOverdue = todoEntry.isOverdue(); // Überprüfung auf Überfälligkeit
 %>
-        <div class="todo-entry <%= isOverdue ? "overdue-highlight" : "" %>"> <!-- Füge die overdue-highlight-Klasse hinzu, wenn überfällig -->
-            <p><%= todoEntry.getTodoTitle() %></p>
+<div class="todo-entry <%= isOverdue ? "overdue-highlight" : "" %>">
+    <div> <div class="todo-title"><%= todoEntry.getTodoTitle() %></div>
+        <div class="todo-attributes">
             <p>Kategorie: <%= todoEntry.getTodoCategory() != null ? todoEntry.getTodoCategory() : "Keine" %></p>
             <p>Fälligkeitsdatum: <%= todoEntry.getFormattedDueDate() != null ? todoEntry.getFormattedDueDate() : "Nicht festgelegt" %></p>
-            
             <p>Wichtig: <%= todoEntry.getTodoIsImportant() ? "Ja" : "Nein" %></p>
             <p>Abgeschlossen: <%= todoEntry.getTodoIsCompleted() ? "Ja" : "Nein" %></p>
-            <form method='post' action='todo' style="display:inline;">
-                <input type='hidden' name='todoId' value='<%= todoEntry.getId() %>' />
-                <input type='hidden' name='action' value='remove' />
-                <input type='submit' value='Entfernen' />
-            </form>
         </div>
+    </div> <form method='post' action='todo' class="remove-form">
+        <input type='hidden' name='todoId' value='<%= todoEntry.getId() %>' />
+        <input type='hidden' name='action' value='remove' />
+        <input type='submit' value='X' />
+    </form>
+</div>
+
 <% 
     }
 } 

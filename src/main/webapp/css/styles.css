@@ -1,13 +1,13 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #F2F2F2; /* Neutral */
-    color: #3B3B3B; /* Text */
+    background-color: #F2F2F2;
+    color: #3B3B3B;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
-    color: #003B5C; /* Primary */
+    color: #003B5C;
     text-align: center;
 }
 
@@ -20,19 +20,19 @@ form {
 label {
     margin-right: 10px;
     font-weight: bold;
-    color: #003B5C; /* Primary */
+    color: #003B5C;
 }
 
 input[type="text"] {
     padding: 10px;
-    border: 1px solid #D6C842; /* Neutral */
+    border: 1px solid #D6C842;
     border-radius: 5px;
     width: 300px;
 }
 
 input[type="submit"] {
-    background-color: #F1B24A; /* Primary */
-    color: #003B5C; /* Primary */
+    background-color: #F1B24A;
+    color: #003B5C;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
@@ -41,24 +41,53 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #BF2D00; /* Accent */
+    background-color: #BF2D00;
     color: white;
 }
 
 .todo-entry {
     background-color: white;
-    border: 1px solid #D6C842; /* Neutral */
+    border: 1px solid #D6C842;
     border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
+    /* Correct Flexbox properties for vertical centering */
+    display: flex; 
+    align-items: center; /* Vertically centers children */
+    justify-content: space-between; /* Pushes children to opposite ends */
+}
+
+.overdue-highlight {
+    background-color: #FFE5E5;
+    border: 1px solid #FF9999;
     padding: 10px;
     margin: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.overdue-highlight {
-    background-color: #FFE5E5; /* Sanftes Rosa */
-    border: 1px solid #FF9999; /* Hellerer Rand */
-    padding: 10px; /* Innenabstand */
-    margin: 10px 0; /* Abstand zu anderen Einträgen */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+.todo-title {
+    font-weight: bold;
+    /* No need for margin-bottom here */
 }
 
+.todo-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    /* This section is for the inner attributes. The parent .todo-entry handles the overall alignment */
+}
+
+/* Remove the following classes as they are no longer needed
+.todo-attributes form {
+    margin-left: auto;
+}
+
+.remove-form {
+    margin-left: auto;
+    align-self: center;
+    display: flex;
+}
+*/
