@@ -42,14 +42,24 @@ if (todoList != null) {
         boolean isOverdue = todoEntry.isOverdue(); // Überprüfung auf Überfälligkeit
 %>
 <div class="todo-entry <%= isOverdue ? "overdue-highlight" : "" %>">
+    
+    
+<label class="done-checkbox">
+        <input type="checkbox" disabled <%= todoEntry.getTodoIsCompleted() ? "checked" : "" %> />
+    </label>
+    
+    
+    
     <div> <div class="todo-title"><%= todoEntry.getTodoTitle() %></div>
         <div class="todo-attributes">
+            
+        
             <p>Kategorie: <%= todoEntry.getTodoCategory() != null ? todoEntry.getTodoCategory() : "Keine" %></p>
             <p>Fälligkeitsdatum: <%= todoEntry.getFormattedDueDate() != null ? todoEntry.getFormattedDueDate() : "Nicht festgelegt" %></p>
             <p>Wichtig: <%= todoEntry.getTodoIsImportant() ? "Ja" : "Nein" %></p>
-            <p>Abgeschlossen: <%= todoEntry.getTodoIsCompleted() ? "Ja" : "Nein" %></p>
+          
         </div>
-    </div> <form method='post' action='todo' class="remove-buttonX">
+    </div> <form method='post' action='todo' class="remove-button">
         <input type='hidden' name='todoId' value='<%= todoEntry.getId() %>' />
         <input type='hidden' name='action' value='remove' />
         <input type='submit' value='X' />
