@@ -49,7 +49,7 @@ if (todoList != null) {
             <p>Wichtig: <%= todoEntry.getTodoIsImportant() ? "Ja" : "Nein" %></p>
             <p>Abgeschlossen: <%= todoEntry.getTodoIsCompleted() ? "Ja" : "Nein" %></p>
         </div>
-    </div> <form method='post' action='todo' class="remove-form">
+    </div> <form method='post' action='todo' class="remove-buttonX">
         <input type='hidden' name='todoId' value='<%= todoEntry.getId() %>' />
         <input type='hidden' name='action' value='remove' />
         <input type='submit' value='X' />

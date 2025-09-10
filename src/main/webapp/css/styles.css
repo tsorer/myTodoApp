@@ -80,14 +80,8 @@ input[type="submit"]:hover {
     /* This section is for the inner attributes. The parent .todo-entry handles the overall alignment */
 }
 
-/* Remove the following classes as they are no longer needed
-.todo-attributes form {
-    margin-left: auto;
-}
 
-.remove-form {
-    margin-left: auto;
-    align-self: center;
-    display: flex;
+
+.remove-buttonX {
+    margin: 10px 0;
 }
-*/
